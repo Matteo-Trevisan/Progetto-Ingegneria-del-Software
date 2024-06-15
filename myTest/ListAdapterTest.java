@@ -2,6 +2,7 @@ package myTest;
 
 import myAdapter.*;
 import org.junit.*;
+
 import java.util.NoSuchElementException;
 
 public class ListAdapterTest {
@@ -303,7 +304,7 @@ public class ListAdapterTest {
         other.add("e");
         other.add("d");
         Assert.assertFalse(list.removeAll(other));
-        Assert.assertEquals(2, list.size());
+        Assert.assertEquals(3, list.size());
     }
 
     @Test

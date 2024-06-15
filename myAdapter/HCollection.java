@@ -105,7 +105,7 @@ public interface HCollection {
     boolean containsAll(HCollection c);
 
     /**
-     * Compares the specified object with this collection for equality. <p>
+     * Compares the specified object with this collection for equality.
      * <p>
      * While the {@code Collection} interface adds no stipulations to the
      * general contract for the {@code Object.equals}, programmers who
@@ -116,7 +116,7 @@ public interface HCollection {
      * course of action is to rely on {@code Object}'s implementation, but
      * the implementer may wish to implement a "value comparison" in place of
      * the default "reference comparison."  (The {@code List} and
-     * {@code Set} interfaces mandate such value comparisons.)<p>
+     * {@code Set} interfaces mandate such value comparisons.)
      * <p>
      * The general contract for the {@code Object.equals} method states that
      * equals must be symmetric (in other words, {@code a.equals(b)} if and
@@ -244,18 +244,18 @@ public interface HCollection {
      * the runtime type of the returned array is that of the specified array.
      * If the collection fits in the specified array, it is returned therein.
      * Otherwise, a new array is allocated with the runtime type of the
-     * specified array and the size of this collection.<p>
+     * specified array and the size of this collection.
      * <p>
      * If this collection fits in the specified array with room to spare
      * (i.e., the array has more elements than this collection), the element
      * in the array immediately following the end of the collection is set to
      * {@code null}.  This is useful in determining the length of this
      * collection <i>only</i> if the caller knows that this collection does
-     * not contain any {@code null} elements.)<p>
+     * not contain any {@code null} elements.)
      * <p>
      * If this collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
-     * the same order.<p>
+     * the same order.
      * <p>
      * Like the {@code toArray} method, this method acts as bridge between
      * array-based and collection-based APIs.  Further, this method allows
@@ -265,12 +265,10 @@ public interface HCollection {
      * Suppose {@code l} is a {@code List} known to contain only strings.
      * The following code can be used to dump the list into a newly allocated
      * array of {@code String}:
-     * <p>
      * <pre>{@code
      * String[] x = (String[]) v.toArray(new String[0]);
      * }
      * </pre>
-     * <p>
      * Note that {@code toArray(new Object[0])} is identical in function to
      * {@code toArray()}.
      *
@@ -284,23 +282,25 @@ public interface HCollection {
 
 
     /**
+     * <p>
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns {@code true} if this collection changed as a
      * result of the call.  (Returns {@code false} if this collection does
-     * not permit duplicates and already contains the specified element.)<p>
+     * not permit duplicates and already contains the specified element.)</p>
      * <p>
      * Collections that support this operation may place limitations on what
      * elements may be added to this collection.  In particular, some
      * collections will refuse to add {@code null} elements, and others will
      * impose restrictions on the type of elements that may be added.
      * Collection classes should clearly specify in their documentation any
-     * restrictions on what elements may be added.<p>
+     * restrictions on what elements may be added.</p>
      * <p>
      * If a collection refuses to add a particular element for any reason
      * other than that it already contains the element, it <i>must</i> throw
      * an exception (rather than returning {@code false}).  This preserves
      * the invariant that a collection always contains the specified element
      * after this call returns.
+     * </p>
      *
      * @param o element whose presence in this collection is to be ensured.
      * @return {@code true} if this collection changed as a result of the call

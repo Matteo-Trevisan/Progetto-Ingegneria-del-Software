@@ -8,7 +8,6 @@ package myAdapter;
  * inserted. The user can access elements by their integer index (position in
  * the list), and search for elements in the list.</p>
  * <p>
- * <p>
  * Unlike sets, lists typically allow duplicate elements. More formally,
  * lists typically allow pairs of elements <tt>e1</tt> and <tt>e2</tt>
  * such that <tt>e1.equals(e2)</tt>, and they typically allow multiple
@@ -17,14 +16,12 @@ package myAdapter;
  * throwing runtime exceptions when the user attempts to insert them, but we
  * expect this usage to be rare.</p>
  * <p>
- * <p>
  * The <tt>List</tt> interface places additional stipulations, beyond those
  * specified in the <tt>Collection</tt> interface, on the contracts of the
  * <tt>iterator</tt>, <tt>add</tt>, <tt>remove</tt>, <tt>equals</tt>, and
  * <tt>hashCode</tt> methods. Declarations for other inherited methods are
  * also included here for convenience.
  * </p>
- * <p>
  * <p>
  * The <tt>List</tt> interface provides four methods for positional (indexed)
  * access to list elements. Lists (like Java arrays) are zero based. Note
@@ -34,7 +31,6 @@ package myAdapter;
  * preferable to indexing through it if the caller does not know the
  * implementation.</p>
  * <p>
- * <p>
  * The <tt>List</tt> interface provides a special iterator, called a
  * <tt>ListIterator</tt>, that allows element insertion and replacement, and
  * bidirectional access in addition to the normal operations that the
@@ -42,16 +38,13 @@ package myAdapter;
  * list iterator that starts at a specified position in the list.
  * </p>
  * <p>
- * <p>
  * The <tt>List</tt> interface provides two methods to search for a specified
  * object. From a performance standpoint, these methods should be used with
  * caution. In many implementations they will perform costly linear
  * searches.</p>
  * <p>
- * <p>
  * The <tt>List</tt> interface provides two methods to efficiently insert and
  * remove multiple elements at an arbitrary point in the list.</p>
- * <p>
  * <p>
  * Note: While it is permissible for lists to contain themselves as elements,
  * extreme caution is advised: the <tt>equals</tt> and <tt>hashCode</tt>
@@ -140,15 +133,16 @@ public interface HList extends HCollection {
     public Object[] toArray(Object[] a);
 
     /**
+     * <p>
      * Appends the specified element to the end of this list (optional
-     * operation). <p>
+     * operation). </p>
      * <p>
      * Lists that support this operation may place limitations on what
      * elements may be added to this list.  In particular, some
      * lists will refuse to add null elements, and others will impose
      * restrictions on the type of elements that may be added.  List
      * classes should clearly specify in their documentation any restrictions
-     * on what elements may be added.
+     * on what elements may be added. </p>
      *
      * @param o element to be appended to this list.
      * @return {@code true} (as per the general contract of the
@@ -249,8 +243,7 @@ public interface HList extends HCollection {
      * @throws IllegalArgumentException      if some aspect of one of elements of
      *                                       the specified collection prevents it from being added to
      *                                       this list.
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       < 0 || index > size()).
+     * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index > size())}.
      */
     public boolean addAll(int index, HCollection c);
 
@@ -345,8 +338,7 @@ public interface HList extends HCollection {
      *
      * @param index index of element to return.
      * @return the element at the specified position in this list.
-     * @throws IndexOutOfBoundsException if the index is out of range (index
-     *                                   < 0 || index >= size()).
+     * @throws IndexOutOfBoundsException if the index is out of range {@code (index < 0 || index >= size())}.
      */
     public Object get(int index);
 
@@ -365,8 +357,7 @@ public interface HList extends HCollection {
      *                                       this list does not support null elements.
      * @throws IllegalArgumentException      if some aspect of the specified
      *                                       element prevents it from being added to this list.
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (index < 0 || index >= size()).
+     * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index >= size())}.
      */
     public Object set(int index, Object element);
 
@@ -386,8 +377,7 @@ public interface HList extends HCollection {
      *                                       this list does not support null elements.
      * @throws IllegalArgumentException      if some aspect of the specified
      *                                       element prevents it from being added to this list.
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (index < 0 || index > size()).
+     * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index > size())}.
      */
     public void add(int index, Object element);
 
@@ -401,8 +391,7 @@ public interface HList extends HCollection {
      * @return the element previously at the specified position.
      * @throws UnsupportedOperationException if the {@code remove} method is
      *                                       not supported by this list.
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       < 0 || index >= size()).
+     * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index >= size())}.
      */
     public Object remove(int index);
 
@@ -466,30 +455,31 @@ public interface HList extends HCollection {
     public HListIterator listIterator(int index);
 
     /**
+     * <p>
      * Returns a view of the portion of this list between the specified
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.  (If
      * {@code fromIndex} and {@code toIndex} are equal, the returned list is
      * empty.)  The returned list is backed by this list, so non-structural
      * changes in the returned list are reflected in this list, and vice-versa.
      * The returned list supports all of the optional list operations supported
-     * by this list.<p>
+     * by this list.</p>
      * <p>
      * This method eliminates the need for explicit range operations (of
      * the sort that commonly exist for arrays).   Any operation that expects
      * a list can be used as a range operation by passing a subList view
      * instead of a whole list.  For example, the following idiom
-     * removes a range of elements from a list:
+     * removes a range of elements from a list:</p>
      * <pre>{@code        list.subList(from, to).clear();
      * }</pre>
      * Similar idioms may be constructed for {@code indexOf} and
      * {@code lastIndexOf}, and all of the algorithms in the
-     * {@code Collections} class can be applied to a subList.<p>
+     * {@code Collections} class can be applied to a subList.
      * <p>
      * The semantics of the list returned by this method become undefined if
      * the backing list (i.e., this list) is <i>structurally modified</i> in
      * any way other than via the returned list.  (Structural modifications are
      * those that change the size of this list, or otherwise perturb it in such
-     * a fashion that iterations in progress may yield incorrect results.)
+     * a fashion that iterations in progress may yield incorrect results.) </p>
      *
      * @param fromIndex low endpoint (inclusive) of the subList.
      * @param toIndex   high endpoint (exclusive) of the subList.
@@ -498,85 +488,4 @@ public interface HList extends HCollection {
      */
     public HList subList(int fromIndex, int toIndex);
 
-
-
-
-
-
-    /* Inserts the specified element at the specified position in this list (optional operation).
-    void add(int index, Object element);
-
-    // Appends the specified element to the end of this list (optional operation).
-    boolean add(Object o);
-
-    // Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator (optional operation).
-    boolean addAll(HCollection c);
-
-    // Inserts all of the elements in the specified collection into this list at the specified position (optional operation).
-    boolean addAll(int index, HCollection c);
-
-    // Removes all of the elements from this list (optional operation).
-    void clear();
-
-    // Returns true if this list contains the specified element.
-    boolean contains(Object o);
-
-    // Returns true if this list contains all of the elements of the specified collection.
-    boolean containsAll(HCollection c);
-
-    // Compares the specified object with this list for equality.
-    boolean equals(Object o);
-
-    // Returns the element at the specified position in this list.
-    Object get(int index);
-
-    // Returns the hash code value for this list.
-    int hashCode();
-
-    // Returns the index in this list of the first occurrence of the specified element, or -1 if this list does not contain this element.
-    int indexOf(Object o);
-
-    // Returns true if this list contains no elements.
-    boolean isEmpty();
-
-    // Returns an iterator over the elements in this list in proper sequence.
-    HIterator iterator();
-
-    // Returns the index in this list of the last occurrence of the specified element, or -1 if this list does not contain this element.
-    int lastIndexOf(Object o);
-
-    // Returns a list iterator of the elements in this list (in proper sequence).
-    HListIterator listIterator();
-
-    // Returns a list iterator of the elements in this list (in proper sequence), starting at the specified position in this list.
-    HListIterator listIterator(int index);
-
-    // Removes the element at the specified position in this list (optional operation).
-    Object remove(int index);
-
-    // Removes the first occurrence in this list of the specified element (optional operation).
-    boolean remove(Object o);
-
-    // Removes from this list all the elements that are contained in the specified collection (optional operation).
-    boolean removeAll(HCollection c);
-
-    // Retains only the elements in this list that are contained in the specified collection (optional operation).
-    boolean retainAll(HCollection c);
-
-    // Replaces the element at the specified position in this list with the specified element (optional operation).
-    Object set(int index, Object element);
-
-    // Returns the number of elements in this list.
-    int size();
-
-    // Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
-    HList subList(int fromIndex, int toIndex);
-
-    // Returns an array containing all of the elements in this list in proper sequence.
-    Object[] toArray();
-
-    // Returns an array containing all of the elements in this list in proper sequence; the runtime type of the returned array is that of the specified array.
-    Object[] toArray(Object[] a);
-
-     */
 }
