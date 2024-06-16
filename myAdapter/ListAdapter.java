@@ -54,11 +54,13 @@ public class ListAdapter implements HList {
     }
 
     public boolean contains(Object o) {
-        for (int i = offset; i < offset + size; i++) {
-            if (vec.elementAt(i) == null && o == null) {
+        HIterator it = this.iterator();
+        while (it.hasNext()) {
+            Object current = it.next();
+            if (current == null && o == null) {
                 return true;
             }
-            if (vec.elementAt(i) != null && vec.elementAt(i).equals(o)) {
+            if (current != null && current.equals(o)) {
                 return true;
             }
         }

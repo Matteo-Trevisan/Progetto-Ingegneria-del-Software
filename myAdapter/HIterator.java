@@ -36,7 +36,7 @@ public interface HIterator {
      * Removes from the underlying collection the last element returned by the iterator (optional operation). This method can be called only once per call to {@code next}. The behavior of an iterator is unspecified if the underlying collection is modified while the iteration is in progress in any way other than by calling this method.
      *
      * @throws UnsupportedOperationException if the remove operation is not supported by this Iterator.
-     *                                       IllegalStateException - if the {@code next} method has not yet been called, or the {@code remove} method has already been called after the last call to the {@code next} method.
+     * @throws IllegalStateException - if the {@code next} method has not yet been called, or the {@code remove} method has already been called after the last call to the {@code next} method.
      */
     void remove();
 }

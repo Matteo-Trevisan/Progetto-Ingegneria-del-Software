@@ -7,30 +7,30 @@ package myAdapter;
  * collections allow duplicate elements and others do not. Some are ordered
  * and others unordered. The SDK does not provide any <i>direct</i>
  * implementations of this interface: it provides implementations of more
- * specific subinterfaces like <tt>Set</tt> and <tt>List</tt>. This interface
+ * specific subinterfaces like {@code Set} and {@code List}. This interface
  * is typically used to pass collections around and manipulate them where
  * maximum generality is desired.
  * </p>
  * <p><i>Bags</i> or <i>multisets</i> (unordered collections that may contain
  * duplicate elements) should implement this interface directly.
  * </p>
- * <p>All general-purpose <tt>Collection</tt> implementation classes (which
- * typically implement <tt>Collection</tt> indirectly through one of its
+ * <p>All general-purpose {@code Collection} implementation classes (which
+ * typically implement {@code Collection} indirectly through one of its
  * subinterfaces) should provide two "standard" constructors: a void (no
  * arguments) constructor, which creates an empty collection, and a
- * constructor with a single argument of type <tt>Collection</tt>, which
+ * constructor with a single argument of type {@code Collection}, which
  * creates a new collection with the same elements as its argument. In
  * effect, the latter constructor allows the user to copy any collection,
  * producing an equivalent collection of the desired implementation type.
  * There is no way to enforce this convention (as interfaces cannot contain
- * constructors) but all of the general-purpose <tt>Collection</tt>
+ * constructors) but all of the general-purpose {@code Collection}
  * implementations in the Java platform libraries comply.
  * </p>
  * <p>The "destructive" methods contained in this interface, that is, the
  * methods that modify the collection on which they operate, are specified to
- * throw <tt>UnsupportedOperationException</tt> if this collection does not
+ * throw {@code UnsupportedOperationException} if this collection does not
  * support the operation. If this is the case, these methods may, but are not
- * required to, throw an <tt>UnsupportedOperationException</tt> if the
+ * required to, throw an {@code UnsupportedOperationException} if the
  * invocation would have no effect on the collection. For example, invoking
  * the <code>addAll(Collection)</code> method on an unmodifiable collection may,
  * but is not required to, throw the exception if the collection to be added
@@ -40,7 +40,7 @@ package myAdapter;
  * they may contain. For example, some implementations prohibit null elements,
  * and some have restrictions on the types of their elements. Attempting to
  * add an ineligible element throws an unchecked exception, typically
- * <tt>NullPointerException</tt> or <tt>ClassCastException</tt>. Attempting
+ * {@code NullPointerException} or {@code ClassCastException}. Attempting
  * to query the presence of an ineligible element may throw an exception,
  * or it may simply return false; some implementations will exhibit the former
  * behavior and some will exhibit the latter. More generally, attempting an
