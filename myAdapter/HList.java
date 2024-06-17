@@ -74,14 +74,14 @@ public interface HList extends HCollection {
      *
      * @return the number of elements in this list.
      */
-    public int size();
+    int size();
 
     /**
      * Returns {@code true} if this list contains no elements.
      *
      * @return {@code true} if this list contains no elements.
      */
-    public boolean isEmpty();
+    boolean isEmpty();
 
     /**
      * Returns {@code true} if this list contains the specified element.
@@ -96,27 +96,27 @@ public interface HList extends HCollection {
      * @throws NullPointerException if the specified element is null and this
      *                              list does not support null elements (optional).
      */
-    public boolean contains(Object o);
+    boolean contains(Object o);
 
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      *
      * @return an iterator over the elements in this list in proper sequence.
      */
-    public HIterator iterator();
+    HIterator iterator();
 
     /**
-     * Returns an array containing all of the elements in this list in proper
+     * Returns an array containing all the elements in this list in proper
      * sequence.  Obeys the general contract of the
      * {@code Collection.toArray} method.
      *
-     * @return an array containing all of the elements in this list in proper
+     * @return an array containing all the elements in this list in proper
      * sequence.
      */
-    public Object[] toArray();
+    Object[] toArray();
 
     /**
-     * Returns an array containing all of the elements in this list in proper
+     * Returns an array containing all the elements in this list in proper
      * sequence; the runtime type of the returned array is that of the
      * specified array.  Obeys the general contract of the
      * {@code Collection.toArray(Object[])} method.
@@ -130,7 +130,7 @@ public interface HList extends HCollection {
      *                              this list.
      * @throws NullPointerException if the specified array is {@code null}.
      */
-    public Object[] toArray(Object[] a);
+    Object[] toArray(Object[] a);
 
     /**
      * <p>
@@ -156,7 +156,7 @@ public interface HList extends HCollection {
      * @throws IllegalArgumentException      if some aspect of this element
      *                                       prevents it from being added to this list.
      */
-    public boolean add(Object o);
+    boolean add(Object o);
 
     /**
      * Removes the first occurrence in this list of the specified element
@@ -174,14 +174,14 @@ public interface HList extends HCollection {
      * @throws UnsupportedOperationException if the {@code remove} method is
      *                                       not supported by this list.
      */
-    public boolean remove(Object o);
+    boolean remove(Object o);
 
     /**
-     * Returns {@code true} if this list contains all of the elements of the
+     * Returns {@code true} if this list contains all the elements of the
      * specified collection.
      *
      * @param c collection to be checked for containment in this list.
-     * @return {@code true} if this list contains all of the elements of the
+     * @return {@code true} if this list contains all the elements of the
      * specified collection.
      * @throws ClassCastException   if the types of one or more elements
      *                              in the specified collection are incompatible with this
@@ -192,10 +192,10 @@ public interface HList extends HCollection {
      * @throws NullPointerException if the specified collection is
      *                              {@code null}.
      */
-    public boolean containsAll(HCollection c);
+    boolean containsAll(HCollection c);
 
     /**
-     * Appends all of the elements in the specified collection to the end of
+     * Appends all the elements in the specified collection to the end of
      * this list, in the order that they are returned by the specified
      * collection's iterator (optional operation).  The behavior of this
      * operation is unspecified if the specified collection is modified while
@@ -215,10 +215,10 @@ public interface HList extends HCollection {
      *                                       specified collection prevents it from being added to this
      *                                       list.
      */
-    public boolean addAll(HCollection c);
+    boolean addAll(HCollection c);
 
     /**
-     * Inserts all of the elements in the specified collection into this
+     * Inserts all the elements in the specified collection into this
      * list at the specified position (optional operation).  Shifts the
      * element currently at that position (if any) and any subsequent
      * elements to the right (increases their indices).  The new elements
@@ -245,7 +245,7 @@ public interface HList extends HCollection {
      *                                       this list.
      * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index > size())}.
      */
-    public boolean addAll(int index, HCollection c);
+    boolean addAll(int index, HCollection c);
 
     /**
      * Removes from this list all the elements that are contained in the
@@ -265,7 +265,7 @@ public interface HList extends HCollection {
      * @throws NullPointerException          if the specified collection is
      *                                       {@code null}.
      */
-    public boolean removeAll(HCollection c);
+    boolean removeAll(HCollection c);
 
     /**
      * Retains only the elements in this list that are contained in the
@@ -286,17 +286,17 @@ public interface HList extends HCollection {
      * @throws NullPointerException          if the specified collection is
      *                                       {@code null}.
      */
-    public boolean retainAll(HCollection c);
+    boolean retainAll(HCollection c);
 
     /**
-     * Removes all of the elements from this list (optional operation).  This
+     * Removes all the elements from this list (optional operation).  This
      * list will be empty after this call returns (unless it throws an
      * exception).
      *
      * @throws UnsupportedOperationException if the {@code clear} method is
      *                                       not supported by this list.
      */
-    public void clear();
+    void clear();
 
     /**
      * Compares the specified object with this list for equality.  Returns
@@ -312,7 +312,7 @@ public interface HList extends HCollection {
      * @param o the object to be compared for equality with this list.
      * @return {@code true} if the specified object is equal to this list.
      */
-    public boolean equals(Object o);
+    boolean equals(Object o);
 
     /**
      * Returns the hash code value for this list.  The hash code of a list
@@ -331,7 +331,7 @@ public interface HList extends HCollection {
      *
      * @return the hash code value for this list.
      */
-    public int hashCode();
+    int hashCode();
 
     /**
      * Returns the element at the specified position in this list.
@@ -340,7 +340,7 @@ public interface HList extends HCollection {
      * @return the element at the specified position in this list.
      * @throws IndexOutOfBoundsException if the index is out of range {@code (index < 0 || index >= size())}.
      */
-    public Object get(int index);
+    Object get(int index);
 
     /**
      * Replaces the element at the specified position in this list with the
@@ -359,7 +359,7 @@ public interface HList extends HCollection {
      *                                       element prevents it from being added to this list.
      * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index >= size())}.
      */
-    public Object set(int index, Object element);
+    Object set(int index, Object element);
 
     /**
      * Inserts the specified element at the specified position in this list
@@ -379,7 +379,7 @@ public interface HList extends HCollection {
      *                                       element prevents it from being added to this list.
      * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index > size())}.
      */
-    public void add(int index, Object element);
+    void add(int index, Object element);
 
     /**
      * Removes the element at the specified position in this list (optional
@@ -393,7 +393,7 @@ public interface HList extends HCollection {
      *                                       not supported by this list.
      * @throws IndexOutOfBoundsException     if the index is out of range {@code (index < 0 || index >= size())}.
      */
-    public Object remove(int index);
+    Object remove(int index);
 
     /**
      * Returns the index in this list of the first occurrence of the specified
@@ -410,7 +410,7 @@ public interface HList extends HCollection {
      * @throws NullPointerException if the specified element is null and this
      *                              list does not support null elements (optional).
      */
-    public int indexOf(Object o);
+    int indexOf(Object o);
 
     /**
      * Returns the index in this list of the last occurrence of the specified
@@ -427,7 +427,7 @@ public interface HList extends HCollection {
      * @throws NullPointerException if the specified element is null and this
      *                              list does not support null elements (optional).
      */
-    public int lastIndexOf(Object o);
+    int lastIndexOf(Object o);
 
     /**
      * Returns a list iterator of the elements in this list (in proper
@@ -436,7 +436,7 @@ public interface HList extends HCollection {
      * @return a list iterator of the elements in this list (in proper
      * sequence).
      */
-    public HListIterator listIterator();
+    HListIterator listIterator();
 
     /**
      * Returns a list iterator of the elements in this list (in proper
@@ -452,7 +452,7 @@ public interface HList extends HCollection {
      * sequence), starting at the specified position in this list.
      * @throws IndexOutOfBoundsException if the index is out of range {@code (index < 0 || index > size())}.
      */
-    public HListIterator listIterator(int index);
+    HListIterator listIterator(int index);
 
     /**
      * <p>
@@ -486,6 +486,6 @@ public interface HList extends HCollection {
      * @return a view of the specified range within this list.
      * @throws IndexOutOfBoundsException for an illegal endpoint index value {@code (fromIndex < 0 || toIndex > size || fromIndex > toIndex)}.
      */
-    public HList subList(int fromIndex, int toIndex);
+    HList subList(int fromIndex, int toIndex);
 
 }

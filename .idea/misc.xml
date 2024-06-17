@@ -4,10 +4,11 @@
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/docs/javadocs" />
     <option name="OPTION_SCOPE" value="private" />
     <option name="OPTION_DOCUMENT_TAG_USE" value="true" />
+    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="true" />
     <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="false" />
     <option name="OTHER_OPTIONS" value="-tag doc.testCaseDesign:a:&quot;Test Case Design:&quot; -tag doc.testDescription:a:&quot;Test Description:&quot; -tag doc.preCondition:a:&quot;Pre-Condition:&quot; -tag doc.postCondition:a:&quot;Post-Condition:&quot; -tag doc.expectedResults:a:&quot;Expected Results:&quot; -link https://docs.oracle.com/javame/config/cldc/ref-impl/cldc1.1/jsr139" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="22" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_4" project-jdk-name="22" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

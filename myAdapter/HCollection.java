@@ -54,7 +54,7 @@ package myAdapter;
 public interface HCollection {
 
     /**
-     * Adds all of the elements in the specified collection to this collection
+     * Adds all the elements in the specified collection to this collection
      * (optional operation).  The behavior of this operation is undefined if
      * the specified collection is modified while the operation is in progress.
      * (This implies that the behavior of this call is undefined if the
@@ -68,17 +68,15 @@ public interface HCollection {
      * @throws NullPointerException          if the specified collection contains one or more null elements and this collection does not permit null elements, or if the specified collection is null.
      * @throws IllegalArgumentException      some aspect of an element of the specified collection prevents it from being added to this collection.
      */
-    // Ensures that this collection contains the specified element (optional operation).
     boolean addAll(HCollection c);
 
     /**
-     * Removes all of the elements from this collection (optional operation).
+     * Removes all the elements from this collection (optional operation).
      * This collection will be empty after this method returns unless it
      * throws an exception.
      *
      * @throws UnsupportedOperationException - if the clear method is not supported by this collection.
      */
-    // Adds all of the elements in the specified collection to this collection (optional operation).
     void clear();
 
     /**
@@ -89,19 +87,17 @@ public interface HCollection {
      * @throws ClassCastException   if the type of the specified element is incompatible with this collection (optional).
      * @throws NullPointerException if the specified element is null and this collection does not support null elements (optional).
      */
-    // Removes all of the elements from this collection (optional operation).
     boolean contains(Object o);
 
     /**
-     * Returns {@code true} if this collection contains all of the elements in the specified collection.
+     * Returns {@code true} if this collection contains all the elements in the specified collection.
      *
      * @param c collection to be checked for containment in this collection.
-     * @return {@code true} if this collection contains all of the elements in the specified collection
+     * @return {@code true} if this collection contains all the elements in the specified collection
      * @throws ClassCastException   if the types of one or more elements in the specified collection are incompatible with this collection (optional).
      * @throws NullPointerException if the specified collection contains one or more null elements and this collection does not support null elements (optional).
      * @throws NullPointerException if the specified collection is {@code null}.
      */
-    // Returns true if this collection contains the specified element.
     boolean containsAll(HCollection c);
 
     /**
@@ -132,7 +128,6 @@ public interface HCollection {
      * @param o Object to be compared for equality with this collection.
      * @return {@code true} if the specified object is equal to this collection
      */
-    // Returns true if this collection contains all of the elements in the specified collection.
     boolean equals(Object o);
 
     /**
@@ -147,7 +142,6 @@ public interface HCollection {
      *
      * @return the hash code value for this collection
      */
-    // Compares the specified object with this collection for equality.
     int hashCode();
 
     /**
@@ -155,7 +149,6 @@ public interface HCollection {
      *
      * @return {@code true} if this collection contains no elements
      */
-    // Returns the hash code value for this collection.
     boolean isEmpty();
 
     /**
@@ -166,7 +159,6 @@ public interface HCollection {
      *
      * @return an {@code Iterator} over the elements in this collection
      */
-    // Returns true if this collection contains no elements.
     HIterator iterator();
 
     /**
@@ -184,7 +176,6 @@ public interface HCollection {
      * @throws NullPointerException          if the specified element is null and this collection does not support null elements (optional).
      * @throws UnsupportedOperationException remove is not supported by this collection.
      */
-    // Returns an iterator over the elements in this collection.
     boolean remove(Object o);
 
     /**
@@ -200,7 +191,6 @@ public interface HCollection {
      * @throws NullPointerException          if this collection contains one or more null elements and the specified collection does not support null elements (optional).
      * @throws NullPointerException          if the specified collection is null.
      */
-    // Removes a single instance of the specified element from this collection, if it is present (optional operation).
     boolean removeAll(HCollection c);
 
     /**
@@ -215,7 +205,6 @@ public interface HCollection {
      * @throws NullPointerException          if this collection contains one or more null elements and the specified collection does not support null elements (optional).
      * @throws NullPointerException          if the specified collection is {@code null}.
      */
-    // Removes all this collection's elements that are also contained in the specified collection (optional operation).
     boolean retainAll(HCollection c);
 
     /**
@@ -224,23 +213,21 @@ public interface HCollection {
      *
      * @return the number of elements in this collection
      */
-    // Retains only the elements in this collection that are contained in the specified collection (optional operation).
     int size();
 
     /**
-     * Returns an array containing all of the elements in this collection. If the collection makes any guarantees as to what order its elements are returned by its iterator, this method must return the elements in the same order.
+     * Returns an array containing all the elements in this collection. If the collection makes any guarantees as to what order its elements are returned by its iterator, this method must return the elements in the same order.
      * <p>
      * The returned array will be "safe" in that no references to it are maintained by this collection. (In other words, this method must allocate a new array even if this collection is backed by an array). The caller is thus free to modify the returned array.
      * <p>
      * This method acts as bridge between array-based and collection-based APIs.
      *
-     * @return an array containing all of the elements in this collection
+     * @return an array containing all the elements in this collection
      */
-    // Returns the number of elements in this collection.
     Object[] toArray();
 
     /**
-     * Returns an array containing all of the elements in this collection;
+     * Returns an array containing all the elements in this collection;
      * the runtime type of the returned array is that of the specified array.
      * If the collection fits in the specified array, it is returned therein.
      * Otherwise, a new array is allocated with the runtime type of the
@@ -251,7 +238,7 @@ public interface HCollection {
      * in the array immediately following the end of the collection is set to
      * {@code null}.  This is useful in determining the length of this
      * collection <i>only</i> if the caller knows that this collection does
-     * not contain any {@code null} elements.)
+     * not contain any {@code null} elements.
      * <p>
      * If this collection makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements in
@@ -277,7 +264,6 @@ public interface HCollection {
      * @throws ArrayStoreException  the runtime type of the specified array is not a supertype of the runtime type of every element in this collection.
      * @throws NullPointerException if the specified array is null.
      */
-    // Returns an array containing all of the elements in this collection.
     Object[] toArray(Object[] a);
 
 
@@ -309,6 +295,5 @@ public interface HCollection {
      * @throws NullPointerException          if the specified element is null and this collection does not permit null elements.
      * @throws IllegalArgumentException      some aspect of this element prevents it from being added to this collection.
      */
-    // Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array.
     boolean add(Object o);
 }

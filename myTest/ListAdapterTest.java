@@ -7,17 +7,29 @@ import java.util.NoSuchElementException;
 
 /**
  * <p>
- * Summary <br>
- * This class represents a detailed description of the test case. It is designed to
- * thoroughly test the functionality of the ListAdapter class and methods. The test cases
- * in this class are organized into logical groups for better understanding and maintenance.
- * </p><p>
- * Test Case Design <br>
- * The design of the test cases in this class involves setting up necessary preconditions,
- * executing the method or class under test, and then verifying the post conditions.
- * The test cases are designed to cover both positive and negative scenarios, and edge cases
- * if any. The setup information and topologies used for testing are also documented for each test case.
+ * Contains a series of unit tests designed to verify the functionality of the ListAdapter class.
+ * The tests are organized into logical groups based on the methods they are testing.
+ * Each test case is designed to test a specific functionality or behavior of the method under test.
+ *</p>
+ * <p>
+ * This test suite is written using Junit 4.13.2, which files can be found in JUnit folder (junit-4.13.2.jar and hamcrest-core-1.3.jar).
  * </p>
+ * <p>
+ * Test Case Design: <br>
+ * The test cases in this class follow a similar design pattern.
+ * Each test case starts by setting up the necessary preconditions, which often involves creating a new instance of the ListAdapter class and populating it with some initial data.
+ * The method under test is then invoked, and its output or effect is captured.
+ * Finally, assertions are made to verify that the observed output or effect matches the expected output or effect.
+ * <br>
+ * For example, In the test case 'ListIterator_ShouldThrow_NoSuchElementException', a new ListAdapter is created and a listIterator is created from it.
+ * The test then verifies that calling the next method on the listIterator throws a NoSuchElementException, as expected.
+ *</p>
+ * <p>
+ * Each test case is designed to be independent of the others, meaning that the outcome of one test does not affect the outcome of another test.
+ * This design allows for each test case to be run in isolation and in any order.
+ * </p>
+ *
+ * @author Matteo Trevisan
  */
 public class ListAdapterTest {
 
@@ -259,7 +271,9 @@ public class ListAdapterTest {
     @Test
     public void addAll_ShouldThrow_IndexException_Negative() {
         ListAdapter list = new ListAdapter();
-        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.addAll(-1, null));
+        ListAdapter other = new ListAdapter();
+        other.add("otherElement1");
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.addAll(-1, other));
     }
 
 
@@ -811,18 +825,18 @@ public class ListAdapterTest {
     }
 
     /**
-     * Verifies that the equals method throws a NullPointerException when null is passed as an argument.
+     * Verifies that the equals method correctly identifies a ListAdapter and null as not equal.
      *
-     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to call the equals method with null as the argument.
-     * @doc.testDescription The test verifies that a NullPointerException is thrown when null is passed to the equals method.
+     * @doc.testCaseDesign The test creates a new ListAdapter and then calls the equals method with null as the argument.
+     * @doc.testDescription The test verifies that the equals method returns false when null is passed as an argument.
      * @doc.preCondition The ListAdapter has just been created.
-     * @doc.postCondition A NullPointerException is thrown.
-     * @doc.expectedResults The test expects a NullPointerException to be thrown.
+     * @doc.postCondition The equals method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the equals method to return false when null is passed as an argument.
      */
     @Test
-    public void equals_ShouldThrow_NullPointer() {
+    public void equals_ShouldReturn_False_Null() {
         ListAdapter list = new ListAdapter();
-        Assert.assertThrows(NullPointerException.class, () -> list.equals(null));
+        Assert.assertFalse(list.equals(null));
     }
 
     /*
@@ -960,7 +974,7 @@ public class ListAdapterTest {
      * @doc.expectedResults The test expects the toString method to return a string that accurately represents the state of an empty ListAdapter.
      */
     @Test
-    public void toString_ShouldReturn_EmptyString() {
+    public void toString_ShouldReturn_String_Empty() {
         ListAdapter list = new ListAdapter();
         Assert.assertEquals("[]", list.toString());
     }
@@ -1615,19 +1629,20 @@ public class ListAdapterTest {
     }
 
     /**
-     * Verifies that the listIterator's add method throws an IllegalStateException when it is called before the next or previous method.
+     * Verifies that the listIterator's add method correctly adds an element to the ListAdapter.
      *
      * @doc.testCaseDesign The test creates a new ListAdapter and then creates a listIterator. It directly calls the add method without calling next or previous.
-     * @doc.testDescription The test verifies that an IllegalStateException is thrown when the add method is called on a listIterator without a prior call to next or previous.
-     * @doc.preCondition The ListAdapter has been initialized.
-     * @doc.postCondition An IllegalStateException is thrown.
-     * @doc.expectedResults The test expects an IllegalStateException to be thrown.
+     * @doc.testDescription The test verifies that an element is correctly added to the ListAdapter when the add method is called on a listIterator without a prior call to next or previous.
+     * @doc.preCondition The ListAdapter has just been created.
+     * @doc.postCondition The add method of the listIterator has been verified for correct functionality.
+     * @doc.expectedResults The test expects the add method to correctly add an element to the ListAdapter.
      */
     @Test
-    public void ListIterator_ShouldThrow_IllegalStateException_Add() {
+    public void ListIteratorAdd_ShouldAdd_Element() {
         ListAdapter list = new ListAdapter();
         HListIterator iterator = list.listIterator();
-        Assert.assertThrows(myAdapter.IllegalStateException.class, () -> iterator.add("element"));
+        iterator.add("element");
+        Assert.assertEquals(1, list.size());
     }
 
     /**

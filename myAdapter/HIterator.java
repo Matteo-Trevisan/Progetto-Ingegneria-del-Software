@@ -1,5 +1,5 @@
 package myAdapter;
-
+import java.util.NoSuchElementException;
 
 /**
  * <p>
@@ -21,7 +21,7 @@ public interface HIterator {
      * Returns {@code true} if the iteration has more elements. (In other words, returns {@code true} if next would return an element rather than throwing an exception.)
      *
      * @return {@code true} if the iterator has more elements.
-     * @throws java.util.NoSuchElementException iteration has no more elements.
+     * @throws NoSuchElementException iteration has no more elements.
      */
     boolean hasNext();
 

@@ -1,5 +1,7 @@
 package myAdapter;
 
+import java.util.NoSuchElementException;
+
 /**
  * <p>
  * An iterator for lists that allows the programmer
@@ -51,7 +53,7 @@ public interface HListIterator extends HIterator {
      * </p>
      *
      * @return the next element in the list.
-     * @throws java.util.NoSuchElementException if the iteration has no next element.
+     * @throws NoSuchElementException if the iteration has no next element.
      */
     public Object next();
 
@@ -78,8 +80,7 @@ public interface HListIterator extends HIterator {
      * </p>
      *
      * @return the previous element in the list.
-     * @throws java.util.NoSuchElementException if the iteration has no previous
-     *                                          element.
+     * @throws NoSuchElementException if the iteration has no previous element.
      */
     public Object previous();
 
