@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * Contains a series of unit tests designed to verify the functionality of the ListAdapter class.
  * The tests are organized into logical groups based on the methods they are testing.
  * Each test case is designed to test a specific functionality or behavior of the method under test.
- *</p>
+ * </p>
  * <p>
  * This test suite is written using Junit 4.13.2, which files can be found in JUnit folder (junit-4.13.2.jar and hamcrest-core-1.3.jar).
  * </p>
@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
  * <br>
  * For example, In the test case 'ListIterator_ShouldThrow_NoSuchElementException', a new ListAdapter is created and a listIterator is created from it.
  * The test then verifies that calling the next method on the listIterator throws a NoSuchElementException, as expected.
- *</p>
+ * </p>
  * <p>
  * Each test case is designed to be independent of the others, meaning that the outcome of one test does not affect the outcome of another test.
  * This design allows for each test case to be run in isolation and in any order.
@@ -97,6 +97,28 @@ public class ListAdapterTest {
     }
 
     /**
+     * Verifies the behavior of the addAll method when the collection to be added contains null elements.
+     *
+     * @doc.testCaseDesign The test creates two ListAdapter instances. One of them, other, is populated with a null element.
+     * Then, the addAll method of the first ListAdapter instance, list, is called with other as an argument.
+     * @doc.testDescription The test checks if the addAll method can handle null elements without throwing exceptions and
+     * if the null element is correctly added to list.
+     * @doc.preCondition The other ListAdapter instance contains a null element.
+     * @doc.postCondition The list ListAdapter instance contains the null element from other.
+     * @doc.expectedResults The addAll method should not throw an exception when adding a collection with null elements.
+     * The list ListAdapter instance should contain the null element after the addAll operation.
+     */
+    @Test
+    public void addAll_ShouldHandle_NullElements() {
+        ListAdapter list = new ListAdapter();
+        ListAdapter other = new ListAdapter();
+        other.add(null);
+        list.addAll(other);
+        Assert.assertEquals(1, list.size());
+        Assert.assertNull(list.get(0));
+    }
+
+    /**
      * Verifies that a new ListAdapter is empty.
      *
      * @doc.testCaseDesign The test creates a new ListAdapter and checks if it is empty.
@@ -112,21 +134,55 @@ public class ListAdapterTest {
     }
 
     /**
-     * Verifies that the size of the ListAdapter is three after adding three elements.
+     * Verifies that the size method correctly returns the size of the ListAdapter after adding elements.
      *
-     * @doc.testCaseDesign The test creates a new ListAdapter, adds three elements and checks its size.
-     * @doc.testDescription The test verifies that the size of the ListAdapter is 3 after adding three elements.
-     * @doc.preCondition The ListAdapter has just been created.
-     * @doc.postCondition The size of the ListAdapter after adding three elements is verified.
-     * @doc.expectedResults The test expects the size of the ListAdapter to be 3.
+     * @doc.testCaseDesign The test creates a new ListAdapter and adds some elements to it. It then calls the size method.
+     * @doc.testDescription The test verifies that the size method returns the correct size of the ListAdapter.
+     * @doc.preCondition The ListAdapter has been initialized and populated with elements.
+     * @doc.postCondition The size method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the size method to return the correct size of the ListAdapter.
      */
     @Test
-    public void add_ShouldAdd_x3() {
+    public void size_ShouldReturn_CorrectSize() {
         ListAdapter list = new ListAdapter();
         list.add("a");
         list.add("b");
         list.add("c");
         Assert.assertEquals(3, list.size());
+    }
+
+    /**
+     * Verifies that the size method correctly returns 0 for an empty ListAdapter.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter and calls the size method.
+     * @doc.testDescription The test verifies that the size method returns 0 for an empty ListAdapter.
+     * @doc.preCondition The ListAdapter has just been created and is empty.
+     * @doc.postCondition The size method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the size method to return 0 for an empty ListAdapter.
+     */
+    @Test
+    public void size_ShouldReturn_Zero() {
+        ListAdapter list = new ListAdapter();
+        Assert.assertEquals(0, list.size());
+    }
+
+    /**
+     * Verifies that the size method correctly returns the size of the ListAdapter after removing elements.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter, adds some elements to it, removes some elements, and then calls the size method.
+     * @doc.testDescription The test verifies that the size method returns the correct size of the ListAdapter after elements have been removed.
+     * @doc.preCondition The ListAdapter has been initialized, populated with elements, and some elements have been removed.
+     * @doc.postCondition The size method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the size method to return the correct size of the ListAdapter after elements have been removed.
+     */
+    @Test
+    public void size_ShouldReturn_CorrectSize_AfterRemoval() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.remove(1);
+        Assert.assertEquals(2, list.size());
     }
 
 
@@ -276,6 +332,69 @@ public class ListAdapterTest {
         Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.addAll(-1, other));
     }
 
+    /**
+     * Verifies that the add method throws an IndexOutOfBoundsException when an invalid index is provided.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to add an element at an invalid index.
+     * @doc.testDescription The test verifies that an IndexOutOfBoundsException is thrown when an invalid index is provided to the add method.
+     * @doc.preCondition The ListAdapter has just been created.
+     * @doc.postCondition An IndexOutOfBoundsException is thrown.
+     * @doc.expectedResults The test expects an IndexOutOfBoundsException to be thrown.
+     */
+    @Test
+    public void add_ShouldThrow_IndexException() {
+        ListAdapter list = new ListAdapter();
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.add(5, "element"));
+    }
+
+    /**
+     * Verifies the behavior of the `addAll` method when an empty collection is provided.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and then attempts to add all elements from an empty collection to it.
+     * @doc.testDescription The test checks if the `addAll` method correctly returns false when the provided collection is empty.
+     * @doc.preCondition The ListAdapter instance is newly created and the provided collection is empty.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `addAll`.
+     * @doc.expectedResults The `addAll` method should return false when the provided collection is empty.
+     */
+    @Test
+    public void addAll_ShouldReturnFalse_WhenCollectionIsEmpty() {
+        ListAdapter list = new ListAdapter();
+        ListAdapter other = new ListAdapter();
+        Assert.assertFalse(list.addAll(other));
+    }
+
+    /**
+     * Verifies that the add method throws an IndexOutOfBoundsException when a negative index is provided.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to add an element at a negative index.
+     * @doc.testDescription The test verifies that an IndexOutOfBoundsException is thrown when a negative index is provided to the add method.
+     * @doc.preCondition The ListAdapter has just been created.
+     * @doc.postCondition An IndexOutOfBoundsException is thrown.
+     * @doc.expectedResults The test expects an IndexOutOfBoundsException to be thrown.
+     */
+    @Test
+    public void Add_ShouldThrow_IndexException_Negative() {
+        ListAdapter list = new ListAdapter();
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, "element"));
+    }
+
+    /**
+     * Verifies that the addAll method throws a NullPointerException when null is passed as the collection to be added at a specific index.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to add null at a specific index using the addAll method.
+     * @doc.testDescription The test verifies that a NullPointerException is thrown when null is passed to the addAll method at a specific index.
+     * @doc.preCondition The ListAdapter has just been created.
+     * @doc.postCondition A NullPointerException is thrown.
+     * @doc.expectedResults The test expects a NullPointerException to be thrown.
+     */
+    @Test
+    public void addAll_ShouldThrow_NullPointerException_WithIndex() {
+        ListAdapter list = new ListAdapter();
+        list.add("element1");
+        list.add("element2");
+        Assert.assertThrows(NullPointerException.class, () -> list.addAll(1, null));
+    }
+
 
     /*
      * ListAdapter Contains Family Tests
@@ -322,6 +441,23 @@ public class ListAdapterTest {
         other.add("a");
         other.add("b");
         Assert.assertTrue(list.containsAll(other));
+    }
+
+    /**
+     * Verifies the behavior of the contains method when the element being searched for is not present in the list.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a single element to it. It then calls the contains method with an element that was not added to the list.
+     * @doc.testDescription The test checks if the contains method correctly returns false when the element being searched for is not present in the list.
+     * @doc.preCondition The ListAdapter instance contains a single element which is different from the element being searched for.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to contains.
+     * @doc.expectedResults The contains method should return false when the element being searched for is not present in the list.
+     */
+    @Test
+    public void contains_ShouldReturnFalse_WhenElementNotPresent() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        boolean result = list.contains("b");
+        Assert.assertFalse(result);
     }
 
     /**
@@ -576,6 +712,22 @@ public class ListAdapterTest {
         list.add("c");
         Assert.assertFalse(list.remove("d"));
         Assert.assertEquals(3, list.size());
+    }
+
+    /**
+     * Verifies the behavior of the `remove` method when the element to be removed is not present in the list.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a few elements to it. It then calls the `remove` method with an element that was not added to the list.
+     * @doc.testDescription The test checks if the `remove` method correctly returns false when the element to be removed is not present in the list.
+     * @doc.preCondition The ListAdapter instance contains a few elements which are different from the element to be removed.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `remove`.
+     * @doc.expectedResults The `remove` method should return false when the element to be removed is not present in the list.
+     */
+    @Test
+    public void remove_ShouldReturnFalse_WhenElementNotPresent() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        Assert.assertFalse(list.remove("b"));
     }
 
     /**
@@ -836,7 +988,26 @@ public class ListAdapterTest {
     @Test
     public void equals_ShouldReturn_False_Null() {
         ListAdapter list = new ListAdapter();
-        Assert.assertFalse(list.equals(null));
+        Assert.assertNotEquals(null, list);
+    }
+
+    /**
+     * Verifies that the equals method correctly identifies two ListAdapters of different sizes as not equal.
+     *
+     * @doc.testCaseDesign The test creates two new ListAdapters. The first one is populated with a set of elements, while the second one is left empty. It then calls the equals method on the first ListAdapter with the second ListAdapter as the argument.
+     * @doc.testDescription The test verifies that the equals method returns false when the two ListAdapters have different sizes.
+     * @doc.preCondition The first ListAdapter is populated with elements and the second ListAdapter is empty.
+     * @doc.postCondition The equals method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the equals method to return false when the two ListAdapters have different sizes.
+     */
+    @Test
+    public void equals_ShouldReturn_False_DifferentSize() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        list.add("b");
+        ListAdapter other = new ListAdapter();
+        other.add("a");
+        Assert.assertNotEquals(list, other);
     }
 
     /*
@@ -1018,6 +1189,25 @@ public class ListAdapterTest {
     }
 
     /**
+     * Verifies that the get method correctly returns the element at the specified position in the ListAdapter.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter and adds a few elements to it. It then calls the get method with the index of an added element as the argument.
+     * @doc.testDescription The test verifies that the get method returns the correct element that was added to the ListAdapter at the specified index.
+     * @doc.preCondition The ListAdapter has been initialized and a few elements have been added to it.
+     * @doc.postCondition The get method of the ListAdapter has been verified for correct functionality.
+     * @doc.expectedResults The test expects the get method to return the correct element that was added to the ListAdapter at the specified index.
+     */
+    @Test
+    public void get_ShouldReturn_CorrectElement() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add(1, "d");
+        Assert.assertEquals("d", list.get(1));
+    }
+
+    /**
      * Verifies that the get method throws an IndexOutOfBoundsException when a negative index is provided.
      *
      * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to retrieve an element at a negative index.
@@ -1071,6 +1261,23 @@ public class ListAdapterTest {
     }
 
     /**
+     * Verifies the behavior of the `set` method when a null element is provided.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a few elements to it. It then calls the `set` method with a null element.
+     * @doc.testDescription The test checks if the `set` method correctly allows the insertion of a null element into the list.
+     * @doc.preCondition The ListAdapter instance contains a few elements.
+     * @doc.postCondition The ListAdapter instance has a null element at the specified index after the call to `set`.
+     * @doc.expectedResults The `set` method should allow the insertion of a null element into the list.
+     */
+    @Test
+    public void set_ShouldAllow_NullElement() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        Assert.assertEquals("a", list.set(0, null));
+        Assert.assertNull(list.get(0));
+    }
+
+    /**
      * Verifies that the set method throws an IndexOutOfBoundsException when a negative index is provided.
      *
      * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to set an element at a negative index.
@@ -1100,58 +1307,6 @@ public class ListAdapterTest {
         Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.set(0, "element"));
     }
 
-    /*
-     * ListAdapter add Family Tests
-     */
-
-    /**
-     * Verifies that the add method correctly adds an element to the ListAdapter.
-     *
-     * @doc.testCaseDesign The test creates a new ListAdapter and then calls the add method with an element as the argument.
-     * @doc.testDescription The test verifies that the add method increases the size of the ListAdapter by one and the added element can be retrieved from the ListAdapter.
-     * @doc.preCondition The ListAdapter has just been created.
-     * @doc.postCondition The add method of the ListAdapter has been verified for correct functionality.
-     * @doc.expectedResults The test expects the size of the ListAdapter to increase by one and the added element to be retrievable from the ListAdapter.
-     */
-    @Test
-    public void add_ShouldAdd_Element() {
-        ListAdapter list = new ListAdapter();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        list.add(1, "d");
-        Assert.assertEquals("d", list.get(1));
-    }
-
-    /**
-     * Verifies that the add method throws an IndexOutOfBoundsException when an invalid index is provided.
-     *
-     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to add an element at an invalid index.
-     * @doc.testDescription The test verifies that an IndexOutOfBoundsException is thrown when an invalid index is provided to the add method.
-     * @doc.preCondition The ListAdapter has just been created.
-     * @doc.postCondition An IndexOutOfBoundsException is thrown.
-     * @doc.expectedResults The test expects an IndexOutOfBoundsException to be thrown.
-     */
-    @Test
-    public void add_ShouldThrow_IndexException() {
-        ListAdapter list = new ListAdapter();
-        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.add(5, "element"));
-    }
-
-    /**
-     * Verifies that the add method throws an IndexOutOfBoundsException when a negative index is provided.
-     *
-     * @doc.testCaseDesign The test creates a new ListAdapter and then attempts to add an element at a negative index.
-     * @doc.testDescription The test verifies that an IndexOutOfBoundsException is thrown when a negative index is provided to the add method.
-     * @doc.preCondition The ListAdapter has just been created.
-     * @doc.postCondition An IndexOutOfBoundsException is thrown.
-     * @doc.expectedResults The test expects an IndexOutOfBoundsException to be thrown.
-     */
-    @Test
-    public void Add_ShouldThrow_IndexException_Negative() {
-        ListAdapter list = new ListAdapter();
-        Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, "element"));
-    }
 
     /*
      * ListAdapter indexOf Family Tests
@@ -1191,6 +1346,22 @@ public class ListAdapterTest {
         list.add("b");
         list.add("c");
         Assert.assertEquals(-1, list.indexOf("d"));
+    }
+
+    /**
+     * Verifies the behavior of the `indexOf` method when the element is not present in the ListAdapter.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a few elements to it. It then calls the `indexOf` method with an element that is not present in the ListAdapter.
+     * @doc.testDescription The test checks if the `indexOf` method correctly returns -1 when the element is not present in the ListAdapter.
+     * @doc.preCondition The ListAdapter instance is initialized and populated with elements.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `indexOf`.
+     * @doc.expectedResults The `indexOf` method should return -1 when the element is not present in the ListAdapter.
+     */
+    @Test
+    public void indexOf_ShouldReturnMinusOne_WhenElementNotPresent() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        Assert.assertEquals(-1, list.indexOf("b"));
     }
 
     /*
@@ -1234,6 +1405,23 @@ public class ListAdapterTest {
         Assert.assertEquals(-1, list.lastIndexOf("d"));
     }
 
+    /**
+     * Verifies the behavior of the `lastIndexOf` method when the element is not present in the ListAdapter.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a few elements to it. It then calls the `lastIndexOf` method with an element that is not present in the ListAdapter.
+     * @doc.testDescription The test checks if the `lastIndexOf` method correctly returns -1 when the element is not present in the ListAdapter.
+     * @doc.preCondition The ListAdapter instance is initialized and populated with elements.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `lastIndexOf`.
+     * @doc.expectedResults The `lastIndexOf` method should return -1 when the element is not present in the ListAdapter.
+     */
+    @Test
+    public void lastIndexOf_ShouldReturnMinusOne_WhenElementNotPresent() {
+        ListAdapter list = new ListAdapter();
+        list.add(1);
+        list.add(2);
+        Assert.assertEquals(-1, list.lastIndexOf("b"));
+    }
+
 
     /*
      * ListAdapter ListIterator Family Tests
@@ -1267,6 +1455,22 @@ public class ListAdapterTest {
     public void ListIterator_ShouldThrow_IndexException_Negative() {
         ListAdapter list = new ListAdapter();
         Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator(-1));
+    }
+
+    /**
+     * Verifies the behavior of the `listIterator` method when the ListAdapter is empty.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance without adding any elements to it. It then retrieves a list iterator from the ListAdapter.
+     * @doc.testDescription The test checks if the `hasNext` method of the retrieved list iterator correctly returns false, as there are no elements in the ListAdapter.
+     * @doc.preCondition The ListAdapter instance is initialized but not populated with any elements.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `listIterator`.
+     * @doc.expectedResults The `hasNext` method of the list iterator should return false when the ListAdapter is empty.
+     */
+    @Test
+    public void listIterator_ShouldNotHaveNext_WhenListIsEmpty() {
+        ListAdapter list = new ListAdapter();
+        HListIterator iterator = list.listIterator();
+        Assert.assertFalse(iterator.hasNext());
     }
 
     /*
@@ -1311,6 +1515,23 @@ public class ListAdapterTest {
         list.add("c");
         ListAdapter subList = (ListAdapter) list.subList(1, 1);
         Assert.assertEquals(0, subList.size());
+    }
+
+    /**
+     * Verifies the behavior of the `subList` method when the fromIndex and toIndex are the same.
+     *
+     * @doc.testCaseDesign The test creates a new ListAdapter instance and adds a few elements to it. It then calls the `subList` method with the same fromIndex and toIndex.
+     * @doc.testDescription The test checks if the `subList` method correctly returns an empty ListAdapter when the fromIndex and toIndex are the same.
+     * @doc.preCondition The ListAdapter instance is initialized and populated with elements.
+     * @doc.postCondition The ListAdapter instance remains unchanged after the call to `subList`.
+     * @doc.expectedResults The `subList` method should return an empty ListAdapter when the fromIndex and toIndex are the same.
+     */
+    @Test
+    public void subList_ShouldReturnEmpty_WhenFromIndexEqualToToIndex() {
+        ListAdapter list = new ListAdapter();
+        list.add("a");
+        HList subList = list.subList(0, 0);
+        Assert.assertTrue(subList.isEmpty());
     }
 
     /**

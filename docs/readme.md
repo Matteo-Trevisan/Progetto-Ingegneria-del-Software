@@ -22,6 +22,15 @@ avvenuto nelle seguenti fasi:
 La documentazione del progetto è stata generata utilizzando il tool Javadoc,
 è possibile visualizzarla aprendo il file `docs/javadocs/index.html`.
 
+Tag personalizzati usati nella javadoc:
+
+-tag "doc.testCaseDesign:a:Test Case Design:"
+-tag "doc.testDescription:a:Test Description:"
+-tag doc.preCondition:a:Pre-Condition:
+-tag doc.postCondition:a:Post-Condition:
+-tag "doc.expectedResults:a:Expected Results:"
+-link https://docs.oracle.com/javame/config/cldc/ref-impl/cldc1.1/jsr139
+
 ## Test
 I test sono stati scritti utilizzando il framework JUnit 4.12, i jar necessari 
 all'esecuzione dei test sono presenti nella cartella `JUnit`.
